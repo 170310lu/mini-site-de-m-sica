@@ -2,18 +2,18 @@
 // Cada objeto: { titulo, artista, capaUrl }
 const musicas = [
 	{
-		titulo: 'Blinding Lights',
-		artista: 'The Weeknd',
+		titulo: '12 Horas/Pra Você Acreditar',
+		artista: 'Panda, Humberto & Ronaldo, Ícaro e Gilmar',
 		capaUrl: 'cover1.jpg'
 	},
 	{
-		titulo: 'Levitating',
-		artista: 'Dua Lipa',
+		titulo: 'Bring Me to Life',
+		artista: 'Evanescence',
 		capaUrl: 'cover2.jpg'
 	},
 	{
-		titulo: 'Bad Habits',
-		artista: 'Ed Sheeran',
+		titulo: 'Tempo Perdido',
+		artista: 'Legião Urbana',
 		capaUrl: 'cover3.jpg'
 	}
 ];

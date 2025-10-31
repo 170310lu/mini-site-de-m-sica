@@ -44,7 +44,7 @@ body{
 .brand{font-size:1.1rem;font-weight:600}
 .main-nav ul{display:flex;gap:18px;list-style:none}
 .main-nav a{color:var(--muted);text-decoration:none;font-weight:500}
-.main-nav a:hover{color:#fff}
+.main-nav a:hover{color:var(--accent)}
 
 /* ESPAÇAMENTO PARA O CONTEÚDO DEBAIXO DA NAVBAR */
 main{padding-top:92px}
@@ -65,7 +65,7 @@ main{padding-top:92px}
 .play{
   background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:600
 }
-.play:hover{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.12)}
+.play:hover{background:rgba(29,185,84,0.1);border-color:var(--accent);color:var(--accent)}
 
 /* DIV que será preenchida dinamicamente */
 #lista-de-musicas{margin-top:22px;padding:12px;border-radius:8px;background:transparent}
@@ -82,3 +82,9 @@ main{padding-top:92px}
 
 /* Pequenos refinamentos visuais */
 .card[aria-current='true']{outline:2px solid rgba(29,185,84,0.12)}
+
+/* Mais detalhes em verde */
+.hero h2 span{color:var(--accent)}
+.card:hover{border-color:var(--accent)}
+.meta a{color:var(--accent);text-decoration:none}
+.meta a:hover{text-decoration:underline}

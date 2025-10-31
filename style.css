@@ -70,8 +70,94 @@ main{padding-top:92px}
 /* DIV que será preenchida dinamicamente */
 #lista-de-musicas{margin-top:22px;padding:12px;border-radius:8px;background:transparent}
 
+/* Player fixo */
+.player-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(24,24,24,0.98);
+  padding: 12px 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  z-index: 100;
+}
+
+.player-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.now-playing {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 180px;
+}
+
+.mini-cover {
+  width: 48px;
+  height: 48px;
+  border-radius: 4px;
+  object-fit: cover;
+}
+
+.track-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.track-info strong {
+  font-size: 0.9rem;
+  color: #fff;
+}
+
+.track-info span {
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+}
+
+/* Estilizar input range */
+input[type="range"] {
+  height: 4px;
+  width: 100px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  cursor: pointer;
+}
+
 /* RODAPÉ */
-.site-footer{padding:26px 0;margin-top:36px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+.site-footer{
+  padding: 26px 0;
+  margin-top: 36px;
+  color: var(--muted);
+  border-top: 1px solid rgba(255,255,255,0.02);
+  margin-bottom: 72px; /* Espaço para o player fixo */
+}
 
 /* RESPONSIVIDADE menor */
 @media (max-width:600px){

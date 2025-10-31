@@ -4,20 +4,20 @@ const musicas = [
 	{
 		titulo: '12 Horas/Pra Você Acreditar',
 		artista: 'Panda, Humberto & Ronaldo, Ícaro e Gilmar',
-		capaUrl: 'assets/covers/cover1.jpg',
-		audioUrl: 'assets/audio/12-horas.mp3'
+		capaUrl: 'https://i.scdn.co/image/ab67616d0000b273a8a29125d82763c598901f23',
+		audioUrl: 'https://p.scdn.co/mp3-preview/dd4c6ccaef04aa78419b63bd755f61701e22c024'
 	},
 	{
 		titulo: 'Bring Me to Life',
 		artista: 'Evanescence',
-		capaUrl: 'assets/covers/cover2.jpg',
-		audioUrl: 'assets/audio/bring-me-to-life.mp3'
+		capaUrl: 'https://i.scdn.co/image/ab67616d0000b273629dc9e2e3bc20bbd7d92e51',
+		audioUrl: 'https://p.scdn.co/mp3-preview/7c2c32f2348073c0a3d8933f0f23caeba85c7c6c'
 	},
 	{
 		titulo: 'Tempo Perdido',
 		artista: 'Legião Urbana',
-		capaUrl: 'assets/covers/cover3.jpg',
-		audioUrl: 'assets/audio/tempo-perdido.mp3'
+		capaUrl: 'https://i.scdn.co/image/ab67616d0000b273f29b566ee698471e54ee36c6',
+		audioUrl: 'https://p.scdn.co/mp3-preview/a3a7d232ecd11890779e3fec4238f83278794e91'
 	},
 	{
 		titulo: 'Na Sua Estante',
@@ -109,6 +109,15 @@ class Player {
 		this.audio = new Audio();
 		this.currentTrack = null;
 		this.isPlaying = false;
+		
+		// Configurar volume inicial
+		this.audio.volume = 0.7;
+		
+		// Eventos de áudio
+		this.audio.addEventListener('ended', () => {
+			this.isPlaying = false;
+			this.updateButtons();
+		});
 	}
 
 	play(musica) {
@@ -168,6 +177,23 @@ class Player {
 				}
 			}
 		});
+
+		// Atualiza player fixo
+		const cover = document.getElementById('nowPlayingCover');
+		const title = document.getElementById('nowPlayingTitle');
+		const artist = document.getElementById('nowPlayingArtist');
+
+		if (this.currentTrack) {
+			cover.src = this.currentTrack.capaUrl;
+			cover.alt = `Capa: ${this.currentTrack.titulo}`;
+			title.textContent = this.currentTrack.titulo;
+			artist.textContent = this.currentTrack.artista;
+		} else {
+			cover.src = '';
+			cover.alt = '';
+			title.textContent = 'Selecione uma música';
+			artist.textContent = '';
+		}
 	}
 }
 
@@ -177,6 +203,16 @@ const player = new Player();
 // Renderiza automaticamente ao carregar o script
 document.addEventListener('DOMContentLoaded', function () {
 	renderMusicas();
+	
+	// Atualiza ano no footer
 	const anoEl = document.getElementById('ano');
 	if (anoEl) anoEl.textContent = new Date().getFullYear();
+
+	// Controle de volume
+	const volumeControl = document.getElementById('volume');
+	if (volumeControl) {
+		volumeControl.addEventListener('input', (e) => {
+			player.audio.volume = e.target.value / 100;
+		});
+	}
 });

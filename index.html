@@ -75,13 +75,30 @@
 			</section>
 		</main>
 
-		<footer class="site-footer">
-			<div class="container">
-				<p>Mini Spotify — Demo &copy; <span id="ano"></span></p>
-			</div>
-		</footer>
+    <!-- Player fixo -->
+    <div class="player-bar">
+      <div class="container player-inner">
+        <div class="now-playing">
+          <img src="" alt="" class="mini-cover" id="nowPlayingCover">
+          <div class="track-info">
+            <strong id="nowPlayingTitle">Selecione uma música</strong>
+            <span id="nowPlayingArtist"></span>
+          </div>
+        </div>
+        <div class="player-controls">
+          <div class="volume-control">
+            <span class="volume-icon">🔊</span>
+            <input type="range" id="volume" min="0" max="100" value="70">
+          </div>
+        </div>
+      </div>
+    </div>
 
-		<script src="app.js"></script>
+    <footer class="site-footer">
+      <div class="container">
+        <p>Mini Spotify — Demo &copy; <span id="ano"></span></p>
+      </div>
+    </footer>		<script src="app.js"></script>
 
 		<!-- Perguntas solicitadas (perguntar e responder como comentários no código) -->
 		<!-- Copilot, o que a tag <section> faz? -->

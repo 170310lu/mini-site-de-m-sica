@@ -1,0 +1,84 @@
+/* Estilo base inspirado no Spotify
+   - Fundo escuro
+   - Tipografia Poppins
+   - Navbar fixa no topo
+   - Cards com capas de música
+
+   Copilot, o que a regra 'display: flex' faz?
+   Resposta: 'display: flex' ativa o Flexbox para um elemento, permitindo distribuir e alinhar seus filhos em uma única dimensão (linha ou coluna) de forma flexível. Facilita o alinhamento, espaçamento e reordenação do conteúdo.
+
+   Copilot, por que você usou border-radius?
+   Resposta: 'border-radius' arredonda os cantos de um elemento, deixando o visual mais suave e moderno; é um detalhe estético comum em interfaces de música/streaming para parecer mais amigável.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root{
+  --bg:#121212;
+  --surface:#181818;
+  --muted:#b3b3b3;
+  --accent:#1db954; /* cor típica do Spotify */
+  --card-radius:10px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Poppins',system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,var(--bg),#0f0f0f);
+  color:#e6e6e6;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  line-height:1.4;
+}
+
+.container{width:min(1100px,94%);margin:0 auto}
+
+/* NAVBAR FIXA */
+.site-header{
+  position:fixed;left:0;right:0;top:0;height:72px;display:flex;align-items:center;
+  background:rgba(16,16,16,0.75);backdrop-filter:blur(6px);z-index:50;border-bottom:1px solid rgba(255,255,255,0.03)
+}
+.header-inner{display:flex;align-items:center;justify-content:space-between;width:100%}
+.logo{display:flex;align-items:center;gap:12px}
+.brand{font-size:1.1rem;font-weight:600}
+.main-nav ul{display:flex;gap:18px;list-style:none}
+.main-nav a{color:var(--muted);text-decoration:none;font-weight:500}
+.main-nav a:hover{color:#fff}
+
+/* ESPAÇAMENTO PARA O CONTEÚDO DEBAIXO DA NAVBAR */
+main{padding-top:92px}
+
+.hero{padding:36px 0 18px}
+.hero h2{font-size:1.6rem;margin-bottom:8px}
+.hero p{color:var(--muted)}
+
+/* CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px;margin:18px 0}
+.card{
+  display:flex;gap:12px;align-items:center;background:linear-gradient(180deg,var(--surface),#0f0f0f);
+  padding:12px;border-radius:var(--card-radius);box-shadow:0 6px 18px rgba(0,0,0,0.6);border:1px solid rgba(255,255,255,0.02)
+}
+.cover{width:72px;height:72px;object-fit:cover;border-radius:8px;flex-shrink:0}
+.card-body h3{font-size:1rem;margin-bottom:6px}
+.meta{color:var(--muted);font-size:0.9rem;margin-bottom:8px}
+.play{
+  background:transparent;border:1px solid rgba(255,255,255,0.06);color:#fff;padding:6px 10px;border-radius:8px;cursor:pointer;font-weight:600
+}
+.play:hover{background:rgba(255,255,255,0.02);border-color:rgba(255,255,255,0.12)}
+
+/* DIV que será preenchida dinamicamente */
+#lista-de-musicas{margin-top:22px;padding:12px;border-radius:8px;background:transparent}
+
+/* RODAPÉ */
+.site-footer{padding:26px 0;margin-top:36px;color:var(--muted);border-top:1px solid rgba(255,255,255,0.02)}
+
+/* RESPONSIVIDADE menor */
+@media (max-width:600px){
+  .main-nav ul{gap:10px;font-size:0.95rem}
+  .cover{width:60px;height:60px}
+  .hero h2{font-size:1.2rem}
+}
+
+/* Pequenos refinamentos visuais */
+.card[aria-current='true']{outline:2px solid rgba(29,185,84,0.12)}

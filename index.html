@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Mini Spotify — Demo</title>
+		<link rel="stylesheet" href="style.css" />
+	</head>
+	<body>
+		<header class="site-header">
+			<div class="container header-inner">
+				<div class="logo">
+					<!-- logo.png é um placeholder; substitua pela sua imagem -->
+					<img src="logo.png" alt="Logotipo Mini Spotify" width="48" height="48" />
+					<h1 class="brand">Mini Spotify</h1>
+				</div>
+				<nav class="main-nav" aria-label="Menu principal">
+					<ul>
+						<li><a href="#">Início</a></li>
+						<li><a href="#">Descobrir</a></li>
+						<li><a href="#">Biblioteca</a></li>
+					</ul>
+				</nav>
+			</div>
+		</header>
+
+		<main>
+			<!-- Seção de destaque / introdução -->
+			<section class="hero">
+				<div class="container">
+					<h2>Ouça suas músicas favoritas</h2>
+					<p>Uma mini-demo no estilo Spotify para organizar e tocar músicas.</p>
+				</div>
+			</section>
+
+			<!-- Seção com cards de músicas -->
+			<section id="musicas" aria-labelledby="musicas-title">
+				<div class="container">
+					<h2 id="musicas-title">Músicas em destaque</h2>
+
+					<div class="cards">
+						<article class="card">
+							<img src="cover1.jpg" alt="Capa: Música 1" class="cover" />
+							<div class="card-body">
+								<h3>Nome da Música 1</h3>
+								<p class="meta">Artista 1 • Álbum 1</p>
+								<button class="play">▶ Tocar</button>
+							</div>
+						</article>
+
+						<article class="card">
+							<img src="cover2.jpg" alt="Capa: Música 2" class="cover" />
+							<div class="card-body">
+								<h3>Nome da Música 2</h3>
+								<p class="meta">Artista 2 • Álbum 2</p>
+								<button class="play">▶ Tocar</button>
+							</div>
+						</article>
+
+						<article class="card">
+							<img src="cover3.jpg" alt="Capa: Música 3" class="cover" />
+							<div class="card-body">
+								<h3>Nome da Música 3</h3>
+								<p class="meta">Artista 3 • Álbum 3</p>
+								<button class="play">▶ Tocar</button>
+							</div>
+						</article>
+					</div>
+
+					<!-- DIV que o JavaScript irá preencher dinamicamente -->
+					<div id="lista-de-musicas" aria-live="polite">
+						<!-- O script em app.js pode inserir a lista de músicas aqui -->
+					</div>
+				</div>
+			</section>
+		</main>
+
+		<footer class="site-footer">
+			<div class="container">
+				<p>Mini Spotify — Demo &copy; <span id="ano"></span></p>
+			</div>
+		</footer>
+
+		<script src="app.js"></script>
+
+		<!-- Perguntas solicitadas (perguntar e responder como comentários no código) -->
+		<!-- Copilot, o que a tag <section> faz? -->
+		<!-- Resposta: A tag <section> define uma seção temática do documento. Ela agrupa conteúdo relacionado (geralmente com um título) e ajuda a estruturar semanticamente a página, melhorando a organização e a acessibilidade. -->
+
+		<!-- Copilot, o que significa o atributo 'alt' em uma imagem? -->
+		<!-- Resposta: O atributo 'alt' fornece um texto alternativo que descreve a imagem. É usado por leitores de tela para acessibilidade e é mostrado quando a imagem não pode ser carregada, ajudando usuários e mecanismos de busca a entenderem o conteúdo da imagem. -->
+	</body>
+</html>
+

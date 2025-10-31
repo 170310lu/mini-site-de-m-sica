@@ -200,8 +200,38 @@ class Player {
 // Instância global do player
 const player = new Player();
 
+// Renderiza as músicas em destaque
+function renderDestaque() {
+	const container = document.querySelector('.featured-grid');
+	if (!container) return;
+
+	// Pega as 3 primeiras músicas para destaque
+	const destaques = musicas.slice(0, 3);
+	
+	destaques.forEach((m, index) => {
+		const card = document.createElement('article');
+		card.className = 'card featured-card';
+		
+		card.innerHTML = `
+			<img src="${m.capaUrl}" alt="Capa: ${escapeHtml(m.titulo)}" class="cover" />
+			<div class="card-body">
+				<h3>${escapeHtml(m.titulo)}</h3>
+				<p class="meta">${escapeHtml(m.artista)}</p>
+				<button class="play featured-play" data-id="${index}">▶ Tocar Agora</button>
+			</div>
+		`;
+
+		container.appendChild(card);
+		
+		// Adiciona listener no botão
+		const playButton = card.querySelector('.play');
+		playButton.addEventListener('click', () => player.play(m));
+	});
+}
+
 // Renderiza automaticamente ao carregar o script
 document.addEventListener('DOMContentLoaded', function () {
+	renderDestaque();
 	renderMusicas();
 	
 	// Atualiza ano no footer

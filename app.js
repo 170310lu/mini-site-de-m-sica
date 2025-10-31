@@ -81,13 +81,55 @@ function renderMusicas(list = window.musicas) {
 			<div class="card-body">
 				<h3>${escapeHtml(m.titulo)}</h3>
 				<p class="meta">${escapeHtml(m.artista)}</p>
-				<button class="play" data-id="${index}">▶ Tocar</button>
+				<div class="card-actions">
+					<button class="play" data-id="${index}">▶ Tocar</button>
+					<button class="upload-audio" title="Enviar arquivo de áudio">📁</button>
+					<button class="upload-cover" title="Enviar imagem de capa">🖼️</button>
+				</div>
 			</div>
 		`;
 
-		// Adiciona listener no botão
+		// Adiciona listener no botão de play
 		const playButton = card.querySelector('.play');
 		playButton.addEventListener('click', () => player.play(m));
+
+		// Upload de áudio local (usa URL.createObjectURL; não persiste após reload)
+		const uploadAudioBtn = card.querySelector('.upload-audio');
+		uploadAudioBtn.addEventListener('click', () => {
+			const input = document.createElement('input');
+			input.type = 'file';
+			input.accept = 'audio/*';
+			input.onchange = (e) => {
+				const file = e.target.files && e.target.files[0];
+				if (!file) return;
+				const blobUrl = URL.createObjectURL(file);
+				m.audioUrl = blobUrl;
+				// Toca automaticamente a faixa carregada
+				player.play(m);
+				// Aviso: arquivo fica disponível apenas na sessão atual do navegador
+				console.info('Áudio carregado localmente (temporário):', file.name);
+			};
+			input.click();
+		});
+
+		// Upload de capa local
+		const uploadCoverBtn = card.querySelector('.upload-cover');
+		uploadCoverBtn.addEventListener('click', () => {
+			const input = document.createElement('input');
+			input.type = 'file';
+			input.accept = 'image/*';
+			input.onchange = (e) => {
+				const file = e.target.files && e.target.files[0];
+				if (!file) return;
+				const blobUrl = URL.createObjectURL(file);
+				m.capaUrl = blobUrl;
+				// Atualiza a imagem no card
+				const img = card.querySelector('.cover');
+				if (img) img.src = blobUrl;
+				console.info('Capa carregada localmente (temporária):', file.name);
+			};
+			input.click();
+		});
 
 		container.appendChild(card);
 	});
